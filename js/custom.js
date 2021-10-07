@@ -15,9 +15,9 @@ $(document).ready(function () {
 
     //Configuração de produtos
 
-    $('.featured-item a').addClass('btn btn-dark stretch-link');
+    // $('.featured-item a').addClass('btn btn-dark stretch-link');
 
-    $('.featured-item:first h4').append('<span class="badge bg-secondary">Novo</span>')
+    $('.featured-item:first h4').append(' ').append('<span class="badge bg-primary">Novo</span>')
     // $('.featured-item:first h4').start('<span class="badge bg-secondary">Novo</span>')
     // $('.featured-item:first h4').html('<span class="badge bg-secondary">Novo</span>')
     // $('.featured-item:first h4').addClass('active')
@@ -31,22 +31,22 @@ $(document).ready(function () {
 
 
 
-    $('.featured-item h4').dblclick(function () {
-        $(this).css({
-            'color': '#f00',
-            'background': '#ff0',
-            'font-weight': '100'
-        })
-    })
+    // $('.featured-item h4').dblclick(function () {
+    //     $(this).css({
+    //         'color': '#f00',
+    //         'background': '#ff0',
+    //         'font-weight': '100'
+    //     })
+    // })
 
     //  Manopulação de eventos
-
+/*
     $('featured-item a').on('blur', function(event) {
         event.preventDefault();
         alert('Produto esgotado');
     })
 
-
+*/
 
 
 })
