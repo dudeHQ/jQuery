@@ -107,20 +107,23 @@ $(document).ready(function () {
   });
 
 
-/*
-  * TODO: Incrementar a validação
-  * - chegar se o nome é válido (com mais de 2 caracteres)
-  * - checar se o e-mail é valido com ao menos um @ e "."
-  */
- 
+  /*
+    * TODO: Incrementar a validação
+    * - chegar se o nome é válido (com mais de 2 caracteres)
+    * - checar se o e-mail é valido com ao menos um @ e "."
+    */
+
   function validate(elem) {
     if (elem.val() == "") {
       console.log('O campo do ' + elem.attr('name') + ' é obrigatório')
 
+      elem.parent().find('.text-muted').show()
       elem.addClass('invalid')
+
 
       return false
     } else {
+      elem.parent().find('.text-muted').hide()
       elem.removeClass('invalid')
     }
   }
@@ -156,6 +159,45 @@ $(document).ready(function () {
   $('body').on('blur', '#email', function () {
     validate($(this))
   })
+
+  /*
+    * Validação com jQuery
+    *
+    */
+
+  $('body').on('focus', '#date', function () {
+    
+    $(this).datepicker();
+  })
+  $('body').on('blur', '#date', function () {
+    validate($(this))
+    $(this).mask('00/00/0000');
+  })
+
+  $('body').on('blur', '#time', function () {
+    validate($(this))
+    $(this).mask('00:00');
+  })
+
+  $('body').on('blur', '#cep', function () {
+    validate($(this))
+    $(this).mask('00000-000');
+  })
+
+  $('body').on('blur', '#phone', function () {
+    validate($(this))
+    $(this).mask('(00) 0 0000-0000');
+  })
+
+  $('body').on('blur', '#cpf', function () {
+    validate($(this))
+    $(this).mask('000.000.000-00');
+  })
+
+
+
+
+
 
 
 })
