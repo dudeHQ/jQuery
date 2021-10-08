@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     // $('.featured-item a').addClass('btn btn-dark stretch-link');
 
-    $('.featured-item:first h4').append(' ').append('<span class="badge bg-primary">Novo</span>')
+    $('.featured-item:nth(0) h4').append(' ').append('<span class="badge bg-primary">Novo</span>')
     // $('.featured-item:first h4').start('<span class="badge bg-secondary">Novo</span>')
     // $('.featured-item:first h4').html('<span class="badge bg-secondary">Novo</span>')
     // $('.featured-item:first h4').addClass('active')
@@ -40,13 +40,68 @@ $(document).ready(function () {
     // })
 
     //  Manopulação de eventos
-/*
-    $('featured-item a').on('blur', function(event) {
-        event.preventDefault();
-        alert('Produto esgotado');
+    /*
+       $('featured-item a').on('blur', function (event) {
+           event.preventDefault();
+           alert('Produto esgotado');
+       })
+   
+       
+       * CallBack
+       * endentendo ações começam ao terminio de outra
+       
+       $('.featured-item:nth(1)')
+           .hide(2000, function () {
+               //este é o callback
+               console.log($(this).find('h4').text() + ' esgotado')
+           })
+           .show(2000, function () {
+               console.log($(this).find('h4').text() + ' em estoque')
+   
+           })*/
+
+    /*
+    * Animações
+    
+    const duracao = 1000 // equivale a 1 segundo
+    $('.featured-item:nth(0)')
+        .hide(duracao)
+        .show(duracao)
+        .fadeOut(duracao)
+        .fadeIn(duracao)
+        .toogle(duracao)
+        .toogle(duracao)*/
+
+    $('#form-submit').on('click', function (e) {
+        e.preventDefault()
+
+        if ($('#email').val() != "") {
+
+            $('#email').animate({
+                opacity: "hide",
+                top: "-50"
+            }, 500, function () {
+                console.log($(this).val())
+            })
+        }
+    });
+
+
+    /*
+     *  Ouvinte de eventos .nav-modal-open
+    */
+
+    $('.nav-modal-open').on('click', function (e) {
+        e.preventDefault();
+        let elem = $(this).attr('rel')
+
+        $('.modal-body').html($('#'+elem).html())
+        $('.modal-header h5.modal-title').html($(this).text())
+
+
+        let myModal = new bootstrap.Modal($('#modelId'))
+        myModal.show()
+
     })
-
-*/
-
 
 })
